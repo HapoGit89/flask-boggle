@@ -29,11 +29,8 @@ def start_game():
 
 @app.route('/guess', methods= ['POST'])
 def validate_guess():
-    guess =  request.get_json()['guess']
-    print(guess)
-    if boggle_game.check_valid_word(game_board, guess['guess']) == True:
-        print("Valid")
-    else:
-        print("not Valid")    
-    return f"{guess}"
+    guess =  request.get_json()['guess'].lower()
+    print(boggle_game.check_valid_word(session['board'], guess))
+    return boggle_game.check_valid_word(session['board'], guess)
+    
 
