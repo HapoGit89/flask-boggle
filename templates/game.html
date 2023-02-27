@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<p>Heres the Game Board!</p>
+
+<table id="boggle_board">
+
+    {% for row in board %}
+    <tr>
+        {% for char in row %} 
+        <td>{{char}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+     
+
+
+</table>
+
+<form id = "guess_form">
+ <input type="text" placeholder="guess" id="guess">
+ <button id ="submitguess">Submit Guess!</button>
+</form>
+<div id="output"></div>
+
+{% endblock %}
+
+{% block scripts%}
+<script src="static/app.js"></script>
+{% endblock %}
