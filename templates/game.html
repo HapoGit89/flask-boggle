@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content%}
 
-<p>Heres the Game Board!</p>
+<h1>Heres the Game Board!</h1>
 
 <table id="boggle_board">
 
@@ -21,7 +21,10 @@
  <input type="text" placeholder="guess" id="guess">
  <button id ="submitguess">Submit Guess!</button>
 </form>
-<div id="output"></div>
+<div id="output">
+    <h1 id="score">Score :</h1>
+    <p id="result"></p>
+</div>
 
 {% endblock %}
 

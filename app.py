@@ -22,7 +22,7 @@ def show_start():
 def start_game():
     game_board = boggle_game.make_board()
     session['board'] = game_board
-    print (session['board'])
+    session['words'] = []
     return render_template('game.html', board=game_board)
 
 
@@ -30,7 +30,12 @@ def start_game():
 @app.route('/guess', methods= ['POST'])
 def validate_guess():
     guess =  request.get_json()['guess'].lower()
-    print(boggle_game.check_valid_word(session['board'], guess))
+    if guess in session['words']:
+        return "Already scored that one!"
+    if boggle_game.check_valid_word(session['board'], guess) == "ok":
+        words = session['words']
+        words.append(guess)
+        session['words'] = words
     return boggle_game.check_valid_word(session['board'], guess)
     
 
