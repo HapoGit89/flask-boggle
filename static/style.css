@@ -1,0 +1,30 @@
+table {
+    table-layout: fixed;
+    width: 50%;
+    border: 3px solid;
+  
+  }
+  
+  td {
+    width: 70px;
+    border: 3px solid;
+    height: 70px;
+    justify-content: center;
+    text-align: center;
+    background: whitesmoke;
+    color: black;
+  }
+  
+  th {
+    width: 70px;
+    border: 3px solid;
+    height: 70px;
+    justify-content: center;
+    text-align: center;
+    background: whitesmoke;
+    color:aqua;
+  }
+
+body {
+    background-color: grey;
+}

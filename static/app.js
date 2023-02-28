@@ -61,6 +61,7 @@ $subButton.on("click", async function (e) {
         }
         $('#result').text(`Last guess: ${$guessInput.val().toUpperCase()}     ---->     ${result.data.toUpperCase()}`)
     }
+    $guessInput.val('')
 })
 
 
