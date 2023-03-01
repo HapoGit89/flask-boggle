@@ -34,17 +34,18 @@ class FlaskTests(TestCase):
             self.assertIsInstance(session['board'][0][0], str)
             self.assertIn(""" <p id="numGames">No of Games Played: 0</p>""", str(res.data))
 
-    # def test_guess_validation(self):
-    #     with app.test_client() as client:
-    #         res = client.get('/game')
-    #         res1 = client.post('/guess',  data=json.dumps(dict(guess= 'test')))
-    #         self.assertIn(("ok" or "not-word" or "not-on-board"), str(res1.data))
+    def test_guess_validation(self):
+        with app.test_client() as client:
+            res = client.get('/game')
+            res1 = client.post('/guess',  json=({'guess': 'test'}))
+            self.assertIn(str(res1.data.decode()), ("ok not-word not-on-board"))
 
-
-    # def test_game_end(self):
-    #      with app.test_client() as client:
-    #         res = client.post('/gameend',  data=json.dumps(dict(score= 10)))
-    #         self.assertIn(""" <p id="highscore">Highscore: 10</p>""", str(res.data))
+    def test_game_end(self):
+         with app.test_client() as client:
+            res = client.get('/game')
+            res1 = client.post('/gameend',  json=({'score': 10}))
+            self.assertEqual(res1.status_code, 302)
+            self.assertEqual(res1.location, '/newgame')
 
     def test_check_valid_word(self):
         """ also checks find() and find_from() becaus check_valid_word needs them to work"""
