@@ -17,7 +17,7 @@ game_board = []
 @app.route('/')
 def show_start():
     """ Shows Start Page"""
-        return render_template('start.html')
+    return render_template('start.html')
 
 
 @app.route('/game')
